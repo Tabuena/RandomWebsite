@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    #loginForm {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      font-size: 1.1em;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 1em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginForm">
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="validateLogin()">Login</button>
+    <div id="errorMessage" class="error"></div>
+  </div>
+
+  <script>
+    // Predefined valid username and password
+    const validUsername = "AdministratorTabuena";
+    const validPassword = "AccessAdmin";  // Replace with your desired password
+
+    // Function to validate login
+    function validateLogin() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+      
+      // Check if the credentials match the predefined ones
+      if (username === validUsername && password === validPassword) {
+        // Store username in localStorage
+        localStorage.setItem('username', username);
+        
+        // Redirect to the welcome page on success
+        window.location.href = "welcome.html";
+      } else {
+        // Display error message for invalid login
+        errorMessage.textContent = "Invalid username or password. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>
